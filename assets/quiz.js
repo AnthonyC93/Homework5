@@ -128,8 +128,8 @@ function startTimer(){
         console.log(timer.css("color"));
         timer.css("color","rgb("+rgb+",0,0)")
         // $(".btn-block").html.css("color","rgb("+rgb+",0,0)")
-        $(".btn-block").css("color","rgb("+rgb+",0,0)")
-        $(".header").css("color","rgb("+rgb+",0,0)")
+        // $(".btn-block").css("color","rgb("+rgb+",0,0)")
+        // $(".header").css("color","rgb("+rgb+",0,0)")
 
        if(time===0){
         timeUp();
