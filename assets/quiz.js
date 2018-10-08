@@ -15,7 +15,7 @@ var questions =[
 
     q3= {
         question: "why am I putting so much damn work into this like damn",
-        options: ["want more money","don't like job","want to do stuff with manager","really like this shit"],
+        options: ["want more money","the people need to see my work","need to automate job","really like this shit"],
         imgSrc: "",
         answer: "want more money"
     },
@@ -75,6 +75,7 @@ var answers=[];
 var seconds;
 var wrong=0;
 var right=0;
+var startingQuestions = questions;
 var startingLength=questions.length;
 //since I want to remove q object from array to keep random easy, I need to remove after evaluation is made because answer is inside it.
 console.log(questions)
@@ -120,6 +121,7 @@ function startTimer(){
        time--;
        timer.html(time);
     //    $("#timerRow").css("margin-top",count+"px");
+        //set rgb changing thing
         timer.css("margin-right",count);
         console.log($("#timer").css("color"));
 
@@ -215,5 +217,6 @@ function endGame(){
     var score = Math.round((right/startingLength)*100)
     $(".header").html("games over. you got "+right+" out of "+startingLength+" correct<br>"+"that's a "+score+"%");
     console.log("games over. you got "+right+" out of "+startingLength+" correct<br>"+"that's a "+score+"%");
+    //make restart button that sets questions = startingQuestions and calls newQuestions(). shoud be simple. 
 }
 //five 
