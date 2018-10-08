@@ -8,14 +8,14 @@ var questions =[
     
     q2= {
         question: "Who was a terrible manager, but decent human being?",
-        options: ["michael scott","gumby","idk","out of options"],
+        options: ["michael scott","gumby","idk","out of ideas for options"],
         imgSrc: "",
         answer: "michael scott"
     },
 
     q3= {
-        question: "why am I putting so much damn work into this like damn",
-        options: ["want more money","the people need to see my work","need to automate job","really like this shit"],
+        question: "why am I doing this to myself",
+        options: ["want more money","the people need to see my work","need to automate my job","really like this shit"],
         imgSrc: "",
         answer: "want more money"
     },
@@ -107,14 +107,16 @@ function startTimer(){
    var timerRowWidth=$("#timerCol").width();
    console.log("width: "+timerRowWidth)
    var count=0
-   $("#timer").css("color","#d83838");
-   var hex =383;
-   
+//    $("#timer").css("color","#d83838");
+   timer.css("color","rgb(0,0,0)");
+   var rgb =0;
+   timer.css("margin-right","initial")
+
    var time=30;
     timer.html(time)
 
     seconds = setInterval(function(){
-        hex+33;
+        rgb=rgb+8;
         count=count+(timerRowWidth/30);        
         console.log("width: "+timerRowWidth)
         console.log("count= "+count)
@@ -123,7 +125,11 @@ function startTimer(){
     //    $("#timerRow").css("margin-top",count+"px");
         //set rgb changing thing
         timer.css("margin-right",count);
-        console.log($("#timer").css("color"));
+        console.log(timer.css("color"));
+        timer.css("color","rgb("+rgb+",0,0)")
+        // $(".btn-block").html.css("color","rgb("+rgb+",0,0)")
+        $(".btn-block").css("color","rgb("+rgb+",0,0)")
+        $(".header").css("color","rgb("+rgb+",0,0)")
 
        if(time===0){
         timeUp();
