@@ -1,84 +1,139 @@
 var questions =[
     q1= {
-        question: "Who directed the 2017 movie Interstellar",
-        options: ["Christopher Nolan", "Michael Bay", "Spike Lee", "Michael Scott"],
+        question: "Who is the american football team in New York?",
+        options: ["giants", "bengals", "patriots", "red sox"],
         imgSrc: "",
-        answer: "Christopher Nolan"
+        answer: "giants"
     },
     
     q2= {
-        question: "Who was a terrible manager, but decent human being?",
-        options: ["michael scott","gumby","idk","out of ideas for options"],
+        question: "Who is the american football team in Seattle?",
+        options: ["seahawks", "jets", "bucaneers", "saints"],
         imgSrc: "",
-        answer: "michael scott"
+        answer: "seahawks"
     },
 
     q3= {
-        question: "why am I doing this to myself",
-        options: ["want more money","the people need to see my work","need to automate my job","really like this shit"],
+        question: "Who is the american football team in Miami, Florida?",
+        options: ["seahawks", "dolphins", "bucaneers", "jets"],
         imgSrc: "",
-        answer: "want more money"
+        answer: "dolphins"
     },
-
-    // q4= {
-    //     question: "",
-    //     options: [],
-    //     imgSrc: "",
-    //     answer: ""
-    // },
-    // q5= {
-    //     question: "",
-    //     options: [],
-    //     imgSrc: "",
-    //     answer: ""
-    // },
-
-    // q6= {
-    //     question: "",
-    //     options: [],
-    //     imgSrc: "",
-    //     answer: ""
-    // },
-
-    // q7= {
-    //     question: "",
-    //     options: [],
-    //     imgSrc: "",
-    //     answer: ""
-    // },
-
-    // q8= {
-    //     question: "",
-    //     options: [],
-    //     imgSrc: "",
-    //     answer: ""
-    // },
-
-    // q9= {
-    //     question: "",
-    //     options: [],
-    //     imgSrc: "",
-    //     answer: ""
-    // },
-
-    // q10= {
-    //     question: "",
-    //     options: [],
-    //     imgSrc: "",
-    //     answer: ""
-    // }
-
-   
-]
+    q4= {
+        question: "Who is the american football team in Tampa Bay, Florida?",
+        options: ["texans", "dolphins", "bucaneers", "jets"],
+        imgSrc: "",
+        answer: "bucaneers"
+    },
+    q5= {
+        question: "Who is the american football team in New Orleans?",
+        options: ["giants", "dolphins", "saints", "jets"],
+        imgSrc: "",
+        answer: "saints"
+    },
+    q6= {
+        question: "Who is the american football team in Cleveland?",
+        options: ["browns", "yankees", "cowboys", "jets"],
+        imgSrc: "",
+        answer: "browns"
+    },
+    q7= {
+        question: "Who is the absolutely awful american football team in philadephia?",
+        options: ["seahawks", "eagles", "bucaneers", "jets"],
+        imgSrc: "",
+        answer: "eagles"
+    },
+    q8= {
+        question: "Who is the american football team in Los Angeles?",
+        options: ["rams", "idk", "chargers", "jaguars"],
+        imgSrc: "",
+        answer: "rams"
+    },
+    q9= {
+        question: "Who is the american football team in Jacksonville, Florida?",
+        options: ["steelers", "ravens", "bucaneers", "jaguars"],
+        imgSrc: "",
+        answer: "jaguars"
+    },
+    q10= {
+        question: "Who is the american football team in Green Bay?",
+        options: ["packers", "kings", "rams", "jets"],
+        imgSrc: "",
+        answer: "packers"
+    }
+];
 var questionBeingPlayed;
-var answers=[];
 var seconds;
 var wrong=0;
 var right=0;
-var startingQuestions = questions;
+// var startingQuestions = questions.slice();
+// var startingQuestions = [].concat(questions);
+var startingQuestions = [
+    q1= {
+        question: "Who is the american football team in New York?",
+        options: ["giants", "bengals", "patriots", "red sox"],
+        imgSrc: "",
+        answer: "giants"
+    },
+    
+    q2= {
+        question: "Who is the american football team in Seattle?",
+        options: ["seahawks", "jets", "bucaneers", "saints"],
+        imgSrc: "",
+        answer: "seahawks"
+    },
+
+    q3= {
+        question: "Who is the american football team in Miami, Florida?",
+        options: ["seahawks", "dolphins", "bucaneers", "jets"],
+        imgSrc: "",
+        answer: "dolphins"
+    },
+    q4= {
+        question: "Who is the american football team in Tampa Bay, Florida?",
+        options: ["texans", "dolphins", "bucaneers", "jets"],
+        imgSrc: "",
+        answer: "bucaneers"
+    },
+    q5= {
+        question: "Who is the american football team in New Orleans?",
+        options: ["giants", "dolphins", "saints", "jets"],
+        imgSrc: "",
+        answer: "saints"
+    },
+    q6= {
+        question: "Who is the american football team in Cleveland?",
+        options: ["browns", "yankees", "cowboys", "jets"],
+        imgSrc: "",
+        answer: "browns"
+    },
+    q7= {
+        question: "Who is the absolutely awful american football team in philadephia?",
+        options: ["seahawks", "eagles", "bucaneers", "jets"],
+        imgSrc: "",
+        answer: "eagles"
+    },
+    q8= {
+        question: "Who is the american football team in Los Angeles?",
+        options: ["rams", "idk", "chargers", "jaguars"],
+        imgSrc: "",
+        answer: "rams"
+    },
+    q9= {
+        question: "Who is the american football team in Jacksonville, Florida?",
+        options: ["steelers", "ravens", "bucaneers", "jaguars"],
+        imgSrc: "",
+        answer: "jaguars"
+    },
+    q10= {
+        question: "Who is the american football team in Green Bay?",
+        options: ["packers", "kings", "rams", "jets"],
+        imgSrc: "",
+        answer: "packers"
+    }
+];
 var startingLength=questions.length;
 //since I want to remove q object from array to keep random easy, I need to remove after evaluation is made because answer is inside it.
-console.log(questions)
 function randomArrayIndex(array){
     var rando = Math.floor(Math.random()*array.length)
 
@@ -90,10 +145,15 @@ $("#start").on("click",function(){
     newQuestion();    
 })
 
+function restart(){
+    questions=startingQuestions.slice();
+    console.log("OG array that is now being played is: " + questions);
+    $("#restart").remove();
+    newQuestion();
+  }
+
 $(".btn-block").on("click",function(){
     var guess = event.target.innerHTML;
-    console.log(guess);
-
     if(guess===questionBeingPlayed.answer){        
         correctGuess();
     }else{
@@ -102,34 +162,23 @@ $(".btn-block").on("click",function(){
 })
 
 function startTimer(){
- 
    var timer = $("#timer");
    var timerRowWidth=$("#timerCol").width();
-   console.log("width: "+timerRowWidth)
    var count=0
-//    $("#timer").css("color","#d83838");
-   timer.css("color","rgb(0,0,0)");
    var rgb =0;
+   timer.css("color","rgb(0,0,0)");
    timer.css("margin-right","initial")
 
    var time=30;
-    timer.html(time)
+   timer.html(time)
 
     seconds = setInterval(function(){
-        rgb=rgb+8;
+        rgb=rgb+11;
         count=count+(timerRowWidth/30);        
-        console.log("width: "+timerRowWidth)
-        console.log("count= "+count)
        time--;
        timer.html(time);
-    //    $("#timerRow").css("margin-top",count+"px");
-        //set rgb changing thing
         timer.css("margin-right",count);
-        console.log(timer.css("color"));
         timer.css("color","rgb("+rgb+",0,0)")
-        // $(".btn-block").html.css("color","rgb("+rgb+",0,0)")
-        // $(".btn-block").css("color","rgb("+rgb+",0,0)")
-        // $(".header").css("color","rgb("+rgb+",0,0)")
 
        if(time===0){
         timeUp();
@@ -157,17 +206,19 @@ function changeCard(qObject){
      $(".op3").html(qObject.options[randomIndex]);
      qObject.options.splice(randomIndex,1);
 
-    console.log(qObject.options)
      randomIndex = randomArrayIndex(qObject.options);
      $(".op4").html(qObject.options[randomIndex]);
      qObject.options.splice(randomIndex,1);
-     console.log(qObject.options)
+
+    //  console.log("new card generated. startingQuestions = " + startingQuestions)
 }
 
 function newQuestion(){
     var randIndex = randomArrayIndex(questions);
-    // questionBeingPlayed = questions[0];
     questionBeingPlayed=questions[randIndex];
+    console.log("question: "+questionBeingPlayed.question);
+    console.log("options: "+questionBeingPlayed.options);
+    console.log("answer: "+ questionBeingPlayed.answer)
     questions.splice(randIndex,1);
     changeCard(questionBeingPlayed);
     $(".btn-block").css("display","initial");
@@ -177,9 +228,7 @@ function wrongGuess(){
     clearInterval(seconds);
     wrong++;
     $(".btn-block").css("display","none")
-    $(".header").html("Sorry! the correct answer is "+questionBeingPlayed.answer)
-    console.log("Sorry! the correct answer is "+questionBeingPlayed.answer)
-    // $("#buttons").html("<img src='https://media.giphy.com/media/623MNjlyhkR7n2GLPQ/giphy.gif'>")
+    $(".header").html("Sorry! the correct answer is "+questionBeingPlayed.answer);
     $("#timer").html("");
     waitAndSwitch();
 
@@ -189,7 +238,6 @@ function correctGuess(){
     right++;
     $(".btn-block").css("display","none")
     $(".header").html("nice");
-    console.log("correct!");
     $("#timer").html("");
     waitAndSwitch();
 }
@@ -197,21 +245,17 @@ function timeUp(){
     clearInterval(seconds);
     wrong++;
     $(".btn-block").css("display","none")
-    console.log("time's up dumbass");
     $(".header").html("time. you're out of it");
     $("#timer").html("");
     waitAndSwitch();
 }
-function populateAnswers(){
-    for(var q in questions){
-        answers.push(questions[q].answer)
-    }
-}
+
 function waitAndSwitch(){
     setTimeout(function(){
         
         if(questions.length===0){
             endGame();
+            return;
         }
         
         newQuestion();
@@ -222,7 +266,7 @@ function endGame(){
     $(".btn-block").css("display","none")
     var score = Math.round((right/startingLength)*100)
     $(".header").html("games over. you got "+right+" out of "+startingLength+" correct<br>"+"that's a "+score+"%");
-    console.log("games over. you got "+right+" out of "+startingLength+" correct<br>"+"that's a "+score+"%");
     //make restart button that sets questions = startingQuestions and calls newQuestions(). shoud be simple. 
+    $("#buttons").append("<button onclick='restart()' type='button'class='btn btn-dark' id='restart'>Restart</button>");
 }
 //five 
